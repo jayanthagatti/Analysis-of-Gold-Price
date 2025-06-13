@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gold Price Predictor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #fbd786, #f7797d);
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            background: #ffffff;
+            padding: 40px 30px;
+            margin: 100px auto;
+            width: 350px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        h2 {
+            color: #333;
+            margin-bottom: 30px;
+        }
+        label {
+            display: block;
+            text-align: left;
+            margin-bottom: 5px;
+            color: #555;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        input[type="submit"] {
+            background-color: #f7b733;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #f57c00;
+        }
+        .prediction {
+            margin-top: 25px;
+            font-size: 18px;
+            color: #2e7d32;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Gold Price Predictor</h2>
+        <form action="/predict" method="post">
+            <label for="SPX">SPX (S&P 500 Index):</label>
+            <input type="text" id="SPX" name="SPX" placeholder="Enter SPX value">
+
+            <label for="USO">USO (Oil Price):</label>
+            <input type="text" id="USO" name="USO" placeholder="Enter USO value">
+
+            <label for="SLV">SLV (Silver Price):</label>
+            <input type="text" id="SLV" name="SLV" placeholder="Enter SLV value">
+
+            <label for="EUR/USD">EUR/USD (Exchange Rate):</label>
+            <input type="text" id="EUR/USD" name="EUR/USD" placeholder="Enter EUR/USD value">
+
+            <input type="submit" value="Predict">
+        </form>
+
+        {% if prediction_text %}
+            <div class="prediction">
+                {{ prediction_text }}
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
